@@ -61,8 +61,6 @@ public class CustomerTest {
         // Generate invoice
         String statement = testCustomer.Statement();
 
-        // Print the statement
-        System.out.println(statement);
         assertThat(statement).
                 contains("Rental record for Test Customer").
                 contains("Star Wars\t2.0").
@@ -89,13 +87,38 @@ public class CustomerTest {
         // Generate invoice
         String statement = testCustomer.Statement();
 
-        // Print the statement
-        System.out.println(statement);
         assertThat(statement).
                 contains("Rental record for Test Customer").
                 contains("Star Wars\t3.5").
                 contains("Amount owed is 3.5").
                 contains("You earned 1 frequent renter points");
+
+
+    }
+
+    @Test
+    public void getReportOnNewReleaseTwoDayOneCustomer() {
+
+        Movie testMovie = new Movie("Star Wars", PriceCodes.NewRelease);
+
+
+        Customer testCustomer = new Customer("Test Customer");
+
+        // Create rentals
+        Rental testRental = new Rental(testMovie, 2);
+
+        // Assign rentals to customers
+        testCustomer.addRental(testRental);
+
+        // Generate invoice
+        String statement = testCustomer.Statement();
+
+        // Print the statement
+        assertThat(statement).
+                contains("Rental record for Test Customer").
+                contains("Star Wars\t6.0").
+                contains("Amount owed is 6.0").
+                contains("You earned 2 frequent renter points");
 
 
     }
