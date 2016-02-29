@@ -13,6 +13,13 @@ public class PriceCodes {
         }
     };
     public static final PriceCodes CHILDREN = new PriceCodes(1.5, 3, 1.5);
+    public static final PriceCodes XXX = new PriceCodes(5, 3, 1) {
+        @Override
+        public int getBonusPoints(int daysRented) {
+            int bonusPoints = super.getBonusPoints(daysRented);
+            return (daysRented > 2) ? bonusPoints + 5 : bonusPoints;
+        }
+    };
     public static final int DEFAULT_BONUS_POINTS = 1;
 
     private final double startAmount;
