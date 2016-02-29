@@ -18,20 +18,20 @@ public class PriceCodeTest {
 
     @Test
     public void getAmountRegularPriceCodeOneDay() {
-        double value = priceCodeRepository.calculate("REGULAR", 1);
+        double value = priceCodeRepository.calculate(PriceCodes.Regular, 1);
         assertTrue(value == 2.0);
     }
 
 
     @Test
     public void getAmountPronRegularPriceCodeOneDay() {
-        double value = priceCodeRepository.calculate("PRON", 1);
+        double value = priceCodeRepository.calculate(PriceCodes.Pron, 1);
         assertTrue(value == 2.0);
     }
 
     @Test
     public void getAmountPronRegularPriceCodeFourDay() {
-        double value = priceCodeRepository.calculate("PRON", 4);
+        double value = priceCodeRepository.calculate(PriceCodes.Pron, 4);
         assertTrue(value == 5.0);
     }
 }

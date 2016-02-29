@@ -9,12 +9,12 @@ import java.util.Map;
 public class PriceCodeRepository {
 
 
-    private Map<String, AbstractPriceCode> pricesCodes = new HashMap<>();
+    private Map<PriceCodes, AbstractPriceCode> pricesCodes = new HashMap<>();
 
     public void init() {
 
         pricesCodes.put(
-                "REGULAR",
+                PriceCodes.Regular,
                 new AbstractPriceCode() {
                     @Override
                     public double calculateAmount(Integer days) {
@@ -35,7 +35,7 @@ public class PriceCodeRepository {
 
 
         pricesCodes.put(
-                "PRON",
+                PriceCodes.Pron,
                 new AbstractPriceCode() {
                     @Override
                     public double calculateAmount(Integer days) {
@@ -49,16 +49,16 @@ public class PriceCodeRepository {
 
                     @Override
                     public double getBonus(Integer days) {
-                        return 0;
+                        return 1;
                     }
                 }
         );
     }
 
-    double calculate(String description, Integer days) {
+    double calculate(PriceCodes code, Integer days) {
         double amount = 0;
-        if (pricesCodes.containsKey(description)) {
-            amount = pricesCodes.get(description).calculateAmount(days);
+        if (pricesCodes.containsKey(code)) {
+            amount = pricesCodes.get(code).calculateAmount(days);
         }
 
         return amount;
