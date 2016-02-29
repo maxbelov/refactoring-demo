@@ -19,7 +19,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -38,7 +38,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -56,7 +56,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -75,7 +75,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -94,7 +94,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -112,7 +112,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then
@@ -130,7 +130,7 @@ public class StatementTest {
         //endregion
 
         //region When
-        String invoice = custMickeyMouse.Statement();
+        String invoice = custMickeyMouse.getInvoice();
         //endregion
 
         //region Then

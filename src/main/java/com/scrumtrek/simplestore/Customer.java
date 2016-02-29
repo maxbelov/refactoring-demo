@@ -20,7 +20,7 @@ public class Customer {
 		m_Rentals.add(arg);
 	}
 
-	public String Statement()
+	public String getInvoice()
 	{
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
