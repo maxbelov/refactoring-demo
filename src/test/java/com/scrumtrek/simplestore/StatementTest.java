@@ -11,7 +11,7 @@ public class StatementTest {
     @Test
     public void childrenMovieRentalNoOverprice() {
         //region Given
-        Movie movCinderella = new Movie("Cinderella", PriceCodes.Childrens);
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.CHILDREN);
         Customer custMickeyMouse = new Customer("Mickey Mouse");
         Rental rental1 = new Rental(movCinderella, 1);
         custMickeyMouse.addRental(rental1);
@@ -30,7 +30,7 @@ public class StatementTest {
     @Test
     public void childrenMovieRentalOverprice() {
         //region Given
-        Movie movCinderella = new Movie("Cinderella", PriceCodes.Childrens);
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.CHILDREN);
         Customer custMickeyMouse = new Customer("Mickey Mouse");
         Rental rental1 = new Rental(movCinderella, 5);
         custMickeyMouse.addRental(rental1);
@@ -41,7 +41,7 @@ public class StatementTest {
         //endregion
 
         //region Then
-        assertThat(invoice).contains("Amount owed is " + ((5-3)*1.5));
+        assertThat(invoice).contains("Amount owed is " + (1.5 + (5-3)*1.5));
         //endregion
     }
 
@@ -49,7 +49,7 @@ public class StatementTest {
     @Test
     public void regularMovieOverprice() {
         //region Given
-        Movie movCinderella = new Movie("Cinderella", PriceCodes.Regular);
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.REGULAR);
         Customer custMickeyMouse = new Customer("Mickey Mouse");
         Rental rental1 = new Rental(movCinderella, 5);
         custMickeyMouse.addRental(rental1);
@@ -67,7 +67,7 @@ public class StatementTest {
     @Test
     public void regularMovieNoOverprice() {
         //region Given
-        Movie movCinderella = new Movie("Cinderella", PriceCodes.Regular);
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.REGULAR);
         Customer custMickeyMouse = new Customer("Mickey Mouse");
         Rental rental1 = new Rental(movCinderella, 1);
         custMickeyMouse.addRental(rental1);
@@ -85,7 +85,7 @@ public class StatementTest {
     @Test
     public void newReleaaseMoviePrice() {
         //region Given
-        Movie movCinderella = new Movie("Cinderella", PriceCodes.NewRelease);
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.NEWRELEASE);
         Customer custMickeyMouse = new Customer("Mickey Mouse");
         Rental rental1 = new Rental(movCinderella, 5);
         custMickeyMouse.addRental(rental1);

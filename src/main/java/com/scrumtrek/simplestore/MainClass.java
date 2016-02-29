@@ -3,9 +3,9 @@ package com.scrumtrek.simplestore;
 class MainClass {
 	 static void Main(String[] args) {
 		// Create movies
-		Movie movCinderella = new Movie("Cinderella", PriceCodes.Childrens);
-		Movie movStarWars = new Movie("Star Wars", PriceCodes.Regular);
-		Movie movGladiator = new Movie("Gladiator", PriceCodes.NewRelease);
+		Movie movCinderella = new Movie("Cinderella", PriceCodes.CHILDREN);
+		Movie movStarWars = new Movie("Star Wars", PriceCodes.REGULAR);
+		Movie movGladiator = new Movie("Gladiator", PriceCodes.NEWRELEASE);
 
 		// Create customers
 		Customer custMickeyMouse = new Customer("Mickey Mouse");
