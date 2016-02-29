@@ -1,4 +1,4 @@
-/**
+package com.scrumtrek.simplestore; /**
  * Created by askryl on 29.02.16.
  */
 
