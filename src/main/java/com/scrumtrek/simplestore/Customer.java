@@ -29,15 +29,7 @@ public class Customer {
 		
 		for(Rental each: m_Rentals) {
 			double thisAmount = each.getMovie().getPriceCode().getAmount(each.getDaysRented());
-
-			// Add frequent renter points
-			frequentRenterPoints++;
-
-			// Add bonus for a two-day new-release rental
-			if ((each.getMovie().getPriceCode() == PriceCodes.NEWRELEASE) && (each.getDaysRented() > 1))
-			{
-				frequentRenterPoints ++;
-			}
+			frequentRenterPoints = each.getMovie().getPriceCode().getBonusPoints(each.getDaysRented());
 
 			// Show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
