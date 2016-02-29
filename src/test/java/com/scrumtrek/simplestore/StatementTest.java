@@ -10,6 +10,98 @@ import static org.fest.assertions.Assertions.assertThat;
 public class StatementTest {
 
     @Test
+    public void bonusRegular() {
+        //region Given
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.CHILDREN);
+        Customer custMickeyMouse = new Customer("Mickey Mouse");
+        Rental rental1 = new Rental(movCinderella, 2);
+        custMickeyMouse.addRental(rental1);
+        //endregion
+
+        //region When
+        String invoice = custMickeyMouse.getInvoice();
+        //endregion
+
+        //region Then
+        assertThat(invoice).contains("You earned " + 1 + " frequent renter points.");
+        //endregion
+    }
+
+    @Test
+    public void bonusNewReleaseDay1() {
+        //region Given
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.NEWRELEASE);
+        Customer custMickeyMouse = new Customer("Mickey Mouse");
+        Rental rental1 = new Rental(movCinderella, 1);
+        custMickeyMouse.addRental(rental1);
+        //endregion
+
+        //region When
+        String invoice = custMickeyMouse.getInvoice();
+        //endregion
+
+        //region Then
+        assertThat(invoice).contains("You earned " + 1 + " frequent renter points.");
+        //endregion
+    }
+
+    @Test
+    public void bonusNewReleaseDay3() {
+        //region Given
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.NEWRELEASE);
+        Customer custMickeyMouse = new Customer("Mickey Mouse");
+        Rental rental1 = new Rental(movCinderella, 2);
+        custMickeyMouse.addRental(rental1);
+        //endregion
+
+        //region When
+        String invoice = custMickeyMouse.getInvoice();
+        //endregion
+
+        //region Then
+        assertThat(invoice).contains("You earned " + 2 + " frequent renter points.");
+        //endregion
+    }
+
+
+    @Test
+    public void bonuXxxDay2() {
+        //region Given
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.XXX);
+        Customer custMickeyMouse = new Customer("Mickey Mouse");
+        Rental rental1 = new Rental(movCinderella, 2);
+        custMickeyMouse.addRental(rental1);
+        //endregion
+
+        //region When
+        String invoice = custMickeyMouse.getInvoice();
+        //endregion
+
+        //region Then
+        assertThat(invoice).contains("You earned " + 1 + " frequent renter points.");
+        //endregion
+    }
+
+
+    @Test
+    public void bonuXxxDay3() {
+        //region Given
+        Movie movCinderella = new Movie("Cinderella", PriceCodes.XXX);
+        Customer custMickeyMouse = new Customer("Mickey Mouse");
+        Rental rental1 = new Rental(movCinderella, 3);
+        custMickeyMouse.addRental(rental1);
+        //endregion
+
+        //region When
+        String invoice = custMickeyMouse.getInvoice();
+        //endregion
+
+        //region Then
+        assertThat(invoice).contains("You earned " + 6 + " frequent renter points.");
+        //endregion
+    }
+
+    @Test
     public void xxxMovieRentalNoOverprice() {
         //region Given
         Movie movCinderella = new Movie("Cinderella", PriceCodes.XXX);
