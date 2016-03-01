@@ -13,21 +13,27 @@ class MainClass {
 		Customer custMinnieMouse = new Customer("Minnie Mouse");
 
 		// Create rentals
-		Rental rental1 = new Rental(movCinderella, 5);
-		Rental rental2 = new Rental(movStarWars, 5);
-		Rental rental3 = new Rental(movGladiator, 5);
+		Rental rental1 = new Rental(5);
+         rental1.addMovie(movCinderella);
+		Rental rental2 = new Rental(5);
+         rental2.addMovie(movStarWars);
+		Rental rental3 = new Rental(5);
+         rental3.addMovie(movGladiator);
 
 		// Assign rentals to customers
 		custMickeyMouse.addRental(rental1);
 		custMickeyMouse.addRental(rental2);
 		custMickeyMouse.addRental(rental3);
 
+
+
+
 		// Generate invoice
-		final String invoice = custMickeyMouse.getInvoice();
+		ReportFormat format = new TextReport();
 
 		// Print the statement
 		InvoicePrinter printer = new InvoicePrinter();
-		 printer.print(invoice);
+		 printer.print(format.format(Report.getReport(custMickeyMouse)));
 	}
 }
 
