@@ -7,5 +7,4 @@ public abstract class AbstractPriceCode {
 
     public abstract double calculateAmount(Integer days);
 
-    public abstract double getBonus(Integer days);
 }

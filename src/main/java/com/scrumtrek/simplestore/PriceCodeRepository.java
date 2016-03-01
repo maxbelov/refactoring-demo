@@ -13,6 +13,7 @@ public class PriceCodeRepository {
 
     public void init() {
 
+
         pricesCodes.put(
                 PriceCodes.Regular,
                 new AbstractPriceCode() {
@@ -26,10 +27,6 @@ public class PriceCodeRepository {
                             return amount;
                     }
 
-                    @Override
-                    public double getBonus(Integer days) {
-                        return 1;
-                    }
                 }
         );
 
@@ -47,10 +44,34 @@ public class PriceCodeRepository {
                         return amount;
                     }
 
+                }
+        );
+
+
+        pricesCodes.put(
+                PriceCodes.NewRelease,
+                new AbstractPriceCode() {
                     @Override
-                    public double getBonus(Integer days) {
-                        return 1;
+                    public double calculateAmount(Integer days) {
+                        return days * 3;
                     }
+
+                }
+        );
+
+        pricesCodes.put(
+                PriceCodes.Childrens,
+                new AbstractPriceCode() {
+                    @Override
+                    public double calculateAmount(Integer days) {
+                        double amount = 1.5;
+                        if (days > 3)
+                        {
+                            amount += (days - 3) * 1.5;
+                        }
+                        return amount;
+                    }
+
                 }
         );
     }
@@ -59,6 +80,16 @@ public class PriceCodeRepository {
         double amount = 0;
         if (pricesCodes.containsKey(code)) {
             amount = pricesCodes.get(code).calculateAmount(days);
+        }
+
+        return amount;
+    }
+
+    double calculate(final Rental rental) {
+        double amount = 0;
+
+        if (pricesCodes.containsKey(rental.getMovie().getPriceCode())) {
+            amount = pricesCodes.get(rental.getMovie().getPriceCode()).calculateAmount(rental.getDaysRented());
         }
 
         return amount;

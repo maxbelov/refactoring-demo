@@ -7,8 +7,11 @@ public class Customer {
 	private String m_Name;
 	private List<Rental> m_Rentals = new ArrayList<Rental>();
 
+	private PriceCodeRepository repo = new PriceCodeRepository();
+
 	public Customer(String name) {
 		m_Name = name;
+		repo.init();
 	}
 
 	public String getName() {
@@ -20,6 +23,16 @@ public class Customer {
 		m_Rentals.add(arg);
 	}
 
+	public double totalAmount() {
+		double totalAmount = 0;
+
+		for(Rental each: m_Rentals) {
+			totalAmount += repo.calculate(each);
+		}
+
+		return totalAmount;
+	}
+
 	public String Statement()
 	{
 		double totalAmount = 0;
@@ -29,7 +42,7 @@ public class Customer {
 		
 		for(Rental each: m_Rentals) {
 			double thisAmount = 0;
-			
+
 			// Determine amounts for each line
 			switch(each.getMovie().getPriceCode()) {
 				case Regular:
