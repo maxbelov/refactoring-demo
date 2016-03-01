@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Customer {
 	private String m_Name;
-	private List<CompositeRental> m_Rentals = new ArrayList<CompositeRental>();
+	private List<CompositeRental> rentals = new ArrayList<CompositeRental>();
 
 	public Customer(String name) {
 		m_Name = name;
@@ -17,22 +17,21 @@ public class Customer {
 
 
 	public void addCompositeRental(CompositeRental arg){
-		m_Rentals.add(arg);
+		rentals.add(arg);
 	}
 
 	public double totalAmount() {
 		double totalAmount = 0;
 
-		for(CompositeRental each: m_Rentals) {
+		for(CompositeRental each: rentals) {
 			totalAmount += each.totalAmount();
 		}
 
 		return totalAmount;
 	}
 
-	public String report()
-	{
-		return "";
+	public List<CompositeRental> getRentals() {
+		return rentals;
 	}
 }
 
