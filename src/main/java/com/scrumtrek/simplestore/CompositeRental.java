@@ -9,4 +9,14 @@ import java.util.List;
 public class CompositeRental {
     private List<Rental> m_Rentals = new ArrayList<Rental>();
 
+    public double totalAmount() {
+        double totalAmount = 0;
+
+        for(Rental each: m_Rentals) {
+            totalAmount += PriceCodeRepository.calculate(each);
+        }
+
+        return totalAmount;
+    }
+
 }

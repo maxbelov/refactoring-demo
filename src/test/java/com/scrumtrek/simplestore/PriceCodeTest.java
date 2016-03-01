@@ -10,28 +10,22 @@ public class PriceCodeTest {
 
     private PriceCodeRepository priceCodeRepository;
 
-    @Before
-    public void before() {
-        priceCodeRepository = new PriceCodeRepository();
-        priceCodeRepository.init();
-    }
-
     @Test
     public void getAmountRegularPriceCodeOneDay() {
-        double value = priceCodeRepository.calculate(PriceCodes.Regular, 1);
+        double value = PriceCodeRepository.calculate(PriceCodes.Regular, 1);
         assertTrue(value == 2.0);
     }
 
 
     @Test
     public void getAmountPronRegularPriceCodeOneDay() {
-        double value = priceCodeRepository.calculate(PriceCodes.Pron, 1);
+        double value = PriceCodeRepository.calculate(PriceCodes.Pron, 1);
         assertTrue(value == 2.0);
     }
 
     @Test
     public void getAmountPronRegularPriceCodeFourDay() {
-        double value = priceCodeRepository.calculate(PriceCodes.Pron, 4);
+        double value = PriceCodeRepository.calculate(PriceCodes.Pron, 4);
         assertTrue(value == 5.0);
     }
 }

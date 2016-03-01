@@ -9,10 +9,8 @@ import java.util.Map;
 public class PriceCodeRepository {
 
 
-    private Map<PriceCodes, AbstractPriceCode> pricesCodes = new HashMap<>();
-
-    public void init() {
-
+    private static Map<PriceCodes, AbstractPriceCode> pricesCodes = new HashMap<>();
+    static {
 
         pricesCodes.put(
                 PriceCodes.Regular,
@@ -76,7 +74,7 @@ public class PriceCodeRepository {
         );
     }
 
-    double calculate(PriceCodes code, Integer days) {
+    static double calculate(PriceCodes code, Integer days) {
         double amount = 0;
         if (pricesCodes.containsKey(code)) {
             amount = pricesCodes.get(code).calculateAmount(days);
@@ -85,7 +83,7 @@ public class PriceCodeRepository {
         return amount;
     }
 
-    double calculate(final Rental rental) {
+    static double calculate(final Rental rental) {
         double amount = 0;
 
         if (pricesCodes.containsKey(rental.getMovie().getPriceCode())) {
