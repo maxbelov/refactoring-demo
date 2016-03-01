@@ -26,5 +26,6 @@ public class JsonFormat implements ReportFormat {
         cr.getRentals().add(r);
         c.addCompositeRental(cr);
         System.out.println(new JsonFormat().format(Report.getReport(c)));
+        System.out.println(new StringReport().format(Report.getReport(c)));
     }
 }
